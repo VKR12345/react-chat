@@ -18,6 +18,8 @@
   "scripts": {
     "dev:client": "npm run start --prefix client",
     "dev:server": "npm run dev --prefix server",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -b master -d build"
   }
 }
