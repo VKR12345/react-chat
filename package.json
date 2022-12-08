@@ -1,0 +1,22 @@
+{
+  "name": "react-express-socket.io-chat-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/harryheman/chat-app.git",
+  "author": "Igor Agapov <aio350@yahoo.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@yandex/smart-captcha": "1.7.2",
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "react-google-recaptcha": "^2.1.0"
+  },
+  "scripts": {
+    "dev:client": "npm run start --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+  }
+}
