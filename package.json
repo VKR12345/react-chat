@@ -6,6 +6,7 @@
   "author": "Igor Agapov <aio350@yahoo.com>",
   "license": "MIT",
   "private": true,
+  "homepage": "https://bebra221.github.io/react-chat/",
   "dependencies": {
     "@yandex/smart-captcha": "1.7.2",
     "bcrypt": "^5.1.0",
