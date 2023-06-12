@@ -6,30 +6,6 @@ const commonPasswords = require('utils/10m most common.json')
 
 
 
-
-
-
-//52 пароля
-//Конечный код, который генерирует пароль и проверяет его на наличие как минимум одного числа, одной заглавной и строчной букв, 
-//одного специального символа, а также на популярность, может выглядеть следующим образом:
-//Мы добавили массив popularPasswords, который содержит наиболее распространенные и легко подбираемые пароли, и использовали его в цикле генерации пароля, 
-//чтобы избежать создания очень простых и неэффективных паролей. Если сгенерированный пароль совпадает с одним из элементов массива popularPasswords, 
-//то цикл генерации продолжается, пока не будет создан уникальный пароль.
-
-// function generation() {
-//   const length = 20;
-//   const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+`}{[];?><,./-=';
-//   let password = ''
-// while (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]|[_]).{8,}$/.test(password) && commonPasswords.includes(password)) {
-//     password = ''
-//     for (let i = 0; i < length; i++) {
-//         password += charset.charAt(Math.floor(Math.random() * charset.length));
-//     }
-// }
-
-// return password;
-// }
-
 function generation() {
   const length = 20;
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+`|}{[]\:;?><,./-=';
@@ -84,8 +60,7 @@ export const NameInput = () => {
   const [isLogin, setLogin] = useState(true)
 
   useEffect(() => {
-    // const isSomeFieldEmpty = Object.values(formData.userLogin).some((f) => !f.trim())
-    // setSubmitDisabled(isSomeFieldEmpty)
+
     const isSomeFieldEmpty = Object.values(formData).some((v) => !v.trim())
     setSubmitDisabled(isSomeFieldEmpty)
   }, [formData])

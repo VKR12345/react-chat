@@ -1,20 +1,28 @@
 const commonPasswords = require('utils/10m most common.json')
-export function generation() {
-    const length = 20;
-    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`}{[];?><,./-=';
-    
-  
-      let password = ''
-    while (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]|[_]).{8,}$/.test(password) && commonPasswords.includes(password)) {
-        password = ''
-        for (let i = 0; i < length; i++) {
-            password += charset.charAt(Math.floor(Math.random() * charset.length));
-        }
+function generation() {
+  const length = 20;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+`|}{[]\:;?><,./-=';
+  let password = '';
+
+  while (true) {
+    password = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random()*characters.length);
+      const randomChar = characters.charAt(randomIndex);
+      password += randomChar;
     }
-    
-    return password;
-    
+
+    if (!commonPasswords.includes(password) &&
+        /[A-Z]/.test(password) &&
+        /[a-z]/.test(password) &&
+        /\d/.test(password) &&
+        /[!@#$%^&*()_+~`|}{[\]:;?><,.\/-=]/.test(password)) {
+      break;
+    }
   }
+
+  return password;
+}
 
 
 export function download(filename, text) {
