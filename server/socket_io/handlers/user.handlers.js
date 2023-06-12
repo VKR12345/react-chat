@@ -20,8 +20,12 @@ export default function userHandlers(io, socket) {
       if(err) {
         console.log(err)
       }
-      console.log(res)
+
+      if (!res) {
+        return 0
+      }
       userFull = res
+      console.log(userFull)
 
       const user = {
       userName: userFull.userName + ' ' + userFull.userSurname,

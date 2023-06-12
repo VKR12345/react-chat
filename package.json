@@ -6,17 +6,21 @@
   "author": "Igor Agapov <aio350@yahoo.com>",
   "license": "MIT",
   "private": true,
+  "homepage": "https://bebra221.github.io/react-chat/",
   "dependencies": {
     "@yandex/smart-captcha": "1.7.2",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.0.0",
+    "gh-pages": "^4.0.0",
     "jsonwebtoken": "^8.5.1",
     "react-google-recaptcha": "^2.1.0"
   },
   "scripts": {
     "dev:client": "npm run start --prefix client",
     "dev:server": "npm run dev --prefix server",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -b master -d build"
   }
 }

@@ -10,17 +10,20 @@ export default function useChat() {
   const [users, setUsers] = useState([])
   const [messages, setMessages] = useState([])
   const [log, setLog] = useState(null)
-  const { current: socket } = useRef(
-    io(SERVER_URI, {
+  console.log("Start")
+    const { current: socket } = useRef(
+      io(SERVER_URI, {
       query: {
         token: storage.get('authToken'),
         roomId: user.roomId,
         userName: user.userName
-      }
-    })
-  )
+      },
+    })    
+    )
+  
 
   useEffect(() => {
+
     socket.emit('user:add', token)
 
     socket.emit('message:get')
@@ -36,6 +39,7 @@ export default function useChat() {
     socket.on('message_list:update', (messages) => {
       setMessages(messages)
     })
+
   }, [])
 
   const sendMessage = (message) => {

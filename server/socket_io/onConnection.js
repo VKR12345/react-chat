@@ -9,6 +9,7 @@ export default function onConnection(io, socket) {
   socket.userName = userName
 
   socket.join(roomId)
+  
 
   userHandlers(io, socket)
 

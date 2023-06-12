@@ -20,8 +20,6 @@
   }
 
   .btn {
-    height: 30px;
-    width: 30px;
     background-color: $primary;
 
     &.close {
@@ -31,7 +29,6 @@
 
     &.chat {
       margin-top: 1rem;
-      padding: 0.25rem 0.5rem;
       width: max-content;
       color: $light;
     }

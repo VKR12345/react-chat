@@ -4,7 +4,7 @@ import { createServer } from 'http'
 import mongoose from 'mongoose'
 import { Server } from 'socket.io'
 import { ALLOWED_ORIGIN, jwtSecret, MONGODB_URI } from './config.js'
-import { createUser, getUser } from './handlers/user.handlers.js'
+import { changePassword, createUser, getUser } from './handlers/user.handlers.js'
 import { signIn } from './handlers/user.handlers.js'
 import onConnection from './socket_io/onConnection.js'
 import { getFilePath } from './utils/file.js'
@@ -52,6 +52,7 @@ try {
 
 app.post('/user', createUser)
 app.post('/login', signIn)
+app.post('/password', changePassword)
 app.get('/user', getUser)
 
 const server = createServer(app)
@@ -61,12 +62,15 @@ const io = new Server(server, {
   serveClient: false
 })
 
+
 io.use(async function(socket, next){
   console.log('connection socket')
   if (socket.handshake.query && socket.handshake.query.token){
-    console.log('verification process: ', socket.handshake.query.token)
     await jwt.verify(socket.handshake.query.token, jwtSecret, async function(err, decoded) {
-      if (err) return next(new Error('Authentication error'));
+      if (err) {
+        console.log('error auth')
+        return next(new Error('Authentication error'));
+      }
       socket.decoded = decoded;
 
       await User.findById(socket.decoded, (err, res) => {
