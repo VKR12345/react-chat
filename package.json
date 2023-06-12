@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/harryheman/chat-app.git",
-  "author": "Igor Agapov <aio350@yahoo.com>",
   "license": "MIT",
   "private": true,
   "homepage": "https://bebra221.github.io/react-chat/",
